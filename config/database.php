@@ -1,7 +1,6 @@
 <?php
 
-$DATABASE_URL=parse_url(' postgres://tierfxaigemtdp:a11b7c5a0bf5b1172d1d5138b576782c3bf6f94c8a0cfec84ba5c5f179eeea97@ec2-54-83-205-27.compute-1.amazonaws.com:5432/dsr71vap8alo');
-
+$DATABASE_URL=parse_url('postgres://tierfxaigemtdp:a11b7c5a0bf5b1172d1d5138b576782c3bf6f94c8a0cfec84ba5c5f179eeea97@ec2-54-83-205-27.compute-1.amazonaws.com:5432/dsr71vap8alo');
 return [
 
     /*
@@ -57,18 +56,18 @@ return [
             'engine' => null,
         ],
 
-        
+
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => $DATABASE_URL["host"],
+            'port' => $DATABASE_URL["port"],
+            'database' => ltrim($DATABASE_URL["path"], "/"),
+            'username' => $DATABASE_URL["user"],
+            'password' => $DATABASE_URL["pass"],
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
-            'sslmode' => 'prefer',
+            'sslmode' => 'require',
         ],
 
 
