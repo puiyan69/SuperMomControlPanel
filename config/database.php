@@ -1,6 +1,6 @@
 <?php
 
-$DATABASE_URL=parse_url('XXXXDatabaseURLXXXXXXXX');
+$DATABASE_URL=parse_url(' postgres://tierfxaigemtdp:a11b7c5a0bf5b1172d1d5138b576782c3bf6f94c8a0cfec84ba5c5f179eeea97@ec2-54-83-205-27.compute-1.amazonaws.com:5432/dsr71vap8alo');
 
 return [
 
@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,18 +54,22 @@ return [
             'sslmode' => 'require',
         ],
 
-        'pgsql' => [
-            'driver' => 'pgsql',
+        'mysql' => [
+            'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
+            'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
-            'charset' => 'utf8',
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
-            'schema' => 'public',
-            'sslmode' => 'prefer',
+            'strict' => true,
+            'engine' => null,
         ],
+
+
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
